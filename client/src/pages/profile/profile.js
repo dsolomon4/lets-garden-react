@@ -28,7 +28,7 @@ class Profile extends Component {
       const data = currentUser
       console.log(data)
       API.findUser(data).then(res => {
-            console.log(res)
+            console.log(res, 'profile call back')
             console.log(res.data.first_name)
             console.log(res.data.zipCode)
             console.log(res.data.id)
@@ -44,13 +44,8 @@ class Profile extends Component {
       this.loadPlants();
 
       };
-      // this.setState({ 
-      //   user: localStorage.user
-      // })
-      // console.log(this.state.user)
 
-      
-    
+          
       loadPlants = () => {
         axios.get("http://harvesthelper.herokuapp.com/api/v1/plants?api_key=9bbe0cb9fc09ec115e66e1a2908a4d9e")
         .then((result) => {

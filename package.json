@@ -1,11 +1,16 @@
 {
-  "name": "plant-swap",
+  "name": "lets-garden",
   "version": "1.0.0",
   "description": "Let's Garden",
   "main": "server.js",
   "scripts": {
-    "test": "npm test",
-    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\""
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,7 +24,6 @@
   "homepage": "https://github.com/dsolomon4/lets-garden-react#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
@@ -29,9 +33,11 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react-router-dom": "^5.0.1",
-    "sequelize": "^4.42.0"
+    "sequelize": "^5.8.7"
   },
   "devDependencies": {
-    "barba.js": "^1.0.0"
+    "barba.js": "^1.0.0",
+    "concurrently": "^4.1.0"
+
   }
 }

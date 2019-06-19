@@ -21,7 +21,7 @@ module.exports = {
   findUser: function(req, res) {
     const  email = req.body.email
     console.log("this is find user")
-    console.log(email)
+    console.log(email, "this is user email")
     db.User
       .findOne( req.params.email)
       .then(dbModel => res.json(dbModel))
